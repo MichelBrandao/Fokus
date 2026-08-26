@@ -2,6 +2,7 @@ const html = document.querySelector('html')
 const timer = document.querySelector('#timer')
 const banner = document.querySelector('.app__image')
 const titulo = document.querySelector('.app__title')
+const botoes = document.querySelectorAll('.app__card-button')
 
 const btn_iniciar = document.querySelector('.app__card-primary-button');
 const btn_foco = document.querySelector('.app__card-button--foco')
@@ -14,17 +15,23 @@ const duracao_descanso_longo = 900;
 
 btn_foco.addEventListener('click', () => {
     alterar_contexto('foco')
+    btn_foco.classList.add('active')
 })
 
 btn_curto.addEventListener('click', () => {
     alterar_contexto('descanso-curto')
+    btn_curto.classList.add('active')
 })
 
 btn_longo.addEventListener('click', () => {
     alterar_contexto('descanso-longo')
+    btn_longo.classList.add('active')
 })
 
 function alterar_contexto(contexto) {
+    botoes.forEach(function (contexto){
+        contexto.classList.remove('active')
+    })
     html.setAttribute('data-contexto', contexto)
     banner.setAttribute('src', `./imagens/${contexto}.png`)
     switch (contexto) {
