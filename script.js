@@ -1,17 +1,29 @@
 const html = document.querySelector('html')
-const timer = document.querySelector('#timer')
 const banner = document.querySelector('.app__image')
 const titulo = document.querySelector('.app__title')
-const botoes = document.querySelectorAll('.app__card-button')
 
+const botoes = document.querySelectorAll('.app__card-button')
 const btn_iniciar = document.querySelector('.app__card-primary-button');
 const btn_foco = document.querySelector('.app__card-button--foco')
 const btn_curto = document.querySelector('.app__card-button--curto')
 const btn_longo = document.querySelector('.app__card-button--longo')
 
+const musica_toggle = document.querySelector('#alternar-musica')
+const musica = new Audio('./sons/luna-rise-part-one.mp3')
+
+const timer = document.querySelector('#timer')
 const duracao_foco = 1500; 
 const duracao_descanso_curto = 300; 
 const duracao_descanso_longo = 900;
+
+musica.loop = true
+musica_toggle.addEventListener('change', () => {
+    if(musica.paused){
+        musica.play()
+    } else {
+        musica.pause()
+    }
+})
 
 btn_foco.addEventListener('click', () => {
     alterar_contexto('foco')
