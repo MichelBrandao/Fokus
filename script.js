@@ -13,16 +13,18 @@ const duracao_descanso_curto = 300;
 const duracao_descanso_longo = 900;
 
 btn_foco.addEventListener('click', () => {
-    html.setAttribute('data-contexto', 'foco')
-    banner.setAttribute('src', './imagens/foco.png')
+    alterar_contexto('foco')
 })
 
 btn_curto.addEventListener('click', () => {
-    html.setAttribute('data-contexto', 'descanso-curto')
-    banner.setAttribute('src', './imagens/descanso-curto.png')
+    alterar_contexto('descanso-curto')
 })
 
 btn_longo.addEventListener('click', () => {
-    html.setAttribute('data-contexto', 'descanso-longo')
-    banner.setAttribute('src', './imagens/descanso-longo.png')
+    alterar_contexto('descanso-longo')
 })
+
+function alterar_contexto(contexto) {
+    html.setAttribute('data-contexto', contexto)
+    banner.setAttribute('src', `./imagens/${contexto}.png`)
+}
